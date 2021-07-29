@@ -30,10 +30,17 @@ const posts = [
   }
 ];
 
+function checkLen(){
+    return(
+      posts.map((elem) => (
+        elem.intro.substring(0,25)+`...`
+    )));
+}
+
 function BlogTile() { 
         return(
             posts.map((elem, index) =>  (
-            <News key={`news-${index}`} id={elem.id} title={elem.title} intro={elem.intro} />
+            <News key={`news-${index}`} id={elem.id} title={elem.title} intro={checkLen()} />
         )));
         };
 

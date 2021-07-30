@@ -10,19 +10,6 @@ const styles= {
   }
 };
 
-function News({ id, title, intro }) {
-  
-  return(
-    <div style={styles}>
-      <h1>{id}</h1>
-      <h2>{title}</h2>
-      <p style={styles.para}>{intro.slice(0,25)+`...`}</p>
-    </div>
-     
-  );
-}
-
-
 const posts = [
   { id: 1, title: 'Pilne: Co to był za dzień!', intro: 'Tego świat jeszcze nie widział'},
   { id: 2, title: 'Wszyscy zazdroszą Polakom!', intro: 'Takiego clickbajtowego tytułu jeszcze nikt nie wymyślił'},
@@ -31,16 +18,23 @@ const posts = [
   }
 ];
 
+const CheckLen= (posts.intro.length>25) ? {intro} : {intro}
 
+function News({ id, title, intro}) {
+  return(
+    <div style={styles}>
+      <h1>{id}</h1>
+      <h2>{title}</h2>
+      <p style={styles.para}>({intro.length}>25)? {intro} : `A`</p>
+    </div>
+  );
+}
 
-function BlogTile({ title, intro }) { 
-        
-        
-        return(
-            posts.map((elem, index) =>  (
-            <News key={`news-${index}`} id={elem.id} title={elem.title} intro={elem.intro} />
-        )));
-        };
+function BlogTile({ id, title, intro }) {
+   return(
+        posts.map(( elem, index ) => (
+        <News key={`news-${index}`} id={elem.id} title={elem.title} intro={elem.intro} />
+    )));};
 
 function App() {
   return (

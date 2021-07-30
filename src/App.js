@@ -18,14 +18,13 @@ const posts = [
   }
 ];
 
-const CheckLen= (posts.intro.length>25) ? {intro} : {intro}
 
 function News({ id, title, intro}) {
   return(
     <div style={styles}>
       <h1>{id}</h1>
       <h2>{title}</h2>
-      <p style={styles.para}>({intro.length}>25)? {intro} : `A`</p>
+      <p style={styles.para}>{intro.slice(0,25)+`...`}</p>
     </div>
   );
 }

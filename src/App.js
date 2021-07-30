@@ -11,13 +11,14 @@ const styles= {
 };
 
 function News({ id, title, intro }) {
+  
   return(
     <div style={styles}>
       <h1>{id}</h1>
       <h2>{title}</h2>
-      <p style={styles.para}>{intro}</p>
+      <p style={styles.para}>{intro.slice(0,25)+`...`}</p>
     </div>
-    
+     
   );
 }
 
@@ -30,17 +31,14 @@ const posts = [
   }
 ];
 
-function checkLen(){
-    return(
-      posts.map((elem) => (
-        elem.intro.substring(0,25)+`...`
-    )));
-}
 
-function BlogTile() { 
+
+function BlogTile({ title, intro }) { 
+        
+        
         return(
             posts.map((elem, index) =>  (
-            <News key={`news-${index}`} id={elem.id} title={elem.title} intro={checkLen()} />
+            <News key={`news-${index}`} id={elem.id} title={elem.title} intro={elem.intro} />
         )));
         };
 
